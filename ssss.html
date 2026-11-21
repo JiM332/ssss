@@ -1,0 +1,616 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Армия | Официальный портал</title>
+
+<style>
+:root {
+    --bg: #101610;
+    --panel: #1b261b;
+    --panel2: #222f22;
+    --green: #687d45;
+    --gold: #c4aa69;
+    --white: #eeeeea;
+    --muted: #a8afa2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: rgba(15, 23, 15, .97);
+    border-bottom: 1px solid #46563b;
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    color: var(--gold);
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ddd;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover { color: var(--gold); }
+
+.hero {
+    min-height: 600px;
+    background:
+    linear-gradient(rgba(8,15,8,.55), rgba(8,15,8,.9)),
+    url("https://images.unsplash.com/photo-1516939884455-1445c8652f83");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero-content { max-width: 850px; }
+
+.hero img {
+    width: 115px;
+    height: 115px;
+    object-fit: contain;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 6vw, 55px);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: white;
+}
+
+.hero h2 {
+    color: var(--gold);
+    margin: 18px 0;
+    font-size: 19px;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    color: #ddd;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 30px;
+    margin-top: 28px;
+    background: var(--green);
+    color: white;
+    text-decoration: none;
+    border: 1px solid #879c5d;
+    transition: .3s;
+}
+
+.button:hover {
+    background: #849b56;
+}
+
+section {
+    padding: 80px 8%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    color: var(--gold);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 45px;
+    line-height: 1.6;
+}
+
+.about {
+    max-width: 950px;
+    margin: auto;
+    text-align: center;
+    color: #c4c9bf;
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid #344431;
+    border-bottom: 3px solid var(--green);
+    padding: 27px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: var(--panel2);
+    border-bottom-color: var(--gold);
+}
+
+.card h3 {
+    color: var(--gold);
+    font-size: 19px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #b9c0b4;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.card .number {
+    font-size: 35px;
+    color: #788b58;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.leader {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto 30px;
+    padding: 35px;
+    background: var(--panel);
+    border: 1px solid var(--gold);
+}
+
+.leader .rank {
+    color: var(--gold);
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.leader h3 {
+    margin-top: 15px;
+    font-size: 24px;
+}
+
+.rank-card {
+    text-align: center;
+}
+
+.rank-card h3 {
+    margin-bottom: 10px;
+}
+
+.rank-card p {
+    font-size: 13px;
+}
+
+.rank-number {
+    color: var(--gold);
+    font-size: 25px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.units .card {
+    min-height: 200px;
+}
+
+.units .card h3 {
+    font-size: 18px;
+}
+
+.quote {
+    background: #202c20;
+    text-align: center;
+    padding: 55px 20px;
+    border-top: 1px solid #48573b;
+    border-bottom: 1px solid #48573b;
+}
+
+.quote h2 {
+    color: var(--gold);
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.quote p {
+    color: #c1c8bb;
+    font-style: italic;
+}
+
+footer {
+    background: #0a100a;
+    text-align: center;
+    padding: 35px 15px;
+    color: #818b7b;
+    line-height: 2;
+    font-size: 13px;
+}
+
+footer span { color: var(--gold); }
+
+@media(max-width: 700px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    section { padding: 55px 6%; }
+
+    .hero { min-height: 480px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Coat_of_Arms_of_Russia.svg/120px-Coat_of_Arms_of_Russia.svg.png" alt="Герб">
+        <span>АРМИЯ</span>
+    </div>
+
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#about">Об армии</a>
+        <a href="#leadership">Руководство</a>
+        <a href="#ranks">Звания</a>
+        <a href="#units">Подразделения</a>
+    </nav>
+</header>
+
+<!-- ГЛАВНАЯ -->
+
+<div class="hero" id="home">
+    <div class="hero-content">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Coat_of_Arms_of_Russia.svg/120px-Coat_of_Arms_of_Russia.svg.png" alt="Герб армии">
+
+        <h1>Вооружённые силы</h1>
+        <h2>ОФИЦИАЛЬНЫЙ ПОРТАЛ АРМИИ</h2>
+
+        <p>
+            Честь. Долг. Отвага. Дисциплина.
+            Служение государству, верность присяге
+            и ответственность за возложенные обязанности.
+        </p>
+
+        <a href="#about" class="button">О нашей армии</a>
+    </div>
+</div>
+
+<!-- ОБ АРМИИ -->
+
+<section id="about">
+    <h2 class="section-title">Об армии</h2>
+    <p class="section-subtitle">
+        Сила государства заключается в дисциплине и единстве его военнослужащих.
+    </p>
+
+    <div class="about">
+        Армия представляет собой организованную военную структуру,
+        главными принципами которой являются соблюдение воинского устава,
+        исполнение приказов командования, поддержание дисциплины
+        и профессиональное выполнение служебных обязанностей.
+
+        <br><br>
+
+        Каждый военнослужащий несёт ответственность за свои действия,
+        соблюдает субординацию и способствует поддержанию высокого
+        уровня боевой и профессиональной подготовки.
+    </div>
+</section>
+
+<!-- РУКОВОДСТВО -->
+
+<section id="leadership" style="background:#151e15;">
+    <h2 class="section-title">Руководство армии</h2>
+    <p class="section-subtitle">
+        Высший командный состав и руководители военных подразделений.
+    </p>
+
+    <div class="leader">
+        <div class="rank">ГЕНЕРАЛ АРМИИ</div>
+        <h3>Имя Фамилия</h3>
+        <p>Главнокомандующий армией</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Первый заместитель генерала</h3>
+            <p>Имя Фамилия</p>
+            <p>Осуществляет координацию деятельности армии и контролирует исполнение приказов генерала.</p>
+        </div>
+
+        <div class="card">
+            <h3>Заместитель генерала</h3>
+            <p>Имя Фамилия</p>
+            <p>Помогает главнокомандующему в управлении армией и организации служебной деятельности.</p>
+        </div>
+
+        <div class="card">
+            <h3>Старший состав</h3>
+            <p>Командиры подразделений</p>
+            <p>Отвечают за личный состав, подготовку военнослужащих и выполнение задач подразделений.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ЗВАНИЯ -->
+
+<section id="ranks">
+    <h2 class="section-title">Воинские звания</h2>
+    <p class="section-subtitle">
+        Иерархия военнослужащих от начального звания до высшего командования.
+    </p>
+
+    <div class="grid">
+
+        <div class="card rank-card">
+            <div class="rank-number">01</div>
+            <h3>Рядовой</h3>
+            <p>Начальное воинское звание.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">02</div>
+            <h3>Ефрейтор</h3>
+            <p>Военнослужащий с дополнительными обязанностями.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">03</div>
+            <h3>Младший сержант</h3>
+            <p>Начальный командный состав.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">04</div>
+            <h3>Сержант</h3>
+            <p>Руководство военнослужащими.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">05</div>
+            <h3>Старший сержант</h3>
+            <p>Контроль дисциплины и подготовки.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">06</div>
+            <h3>Старшина</h3>
+            <p>Старший сержантский состав.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">07</div>
+            <h3>Прапорщик</h3>
+            <p>Специалист и опытный военнослужащий.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">08</div>
+            <h3>Старший прапорщик</h3>
+            <p>Старший состав прапорщиков.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">09</div>
+            <h3>Младший лейтенант</h3>
+            <p>Начальный офицерский состав.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">10</div>
+            <h3>Лейтенант</h3>
+            <p>Офицерский командный состав.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">11</div>
+            <h3>Старший лейтенант</h3>
+            <p>Офицер с опытом командования.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">12</div>
+            <h3>Капитан</h3>
+            <p>Командир подразделения.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">13</div>
+            <h3>Майор</h3>
+            <p>Старший офицерский состав.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">14</div>
+            <h3>Подполковник</h3>
+            <p>Высший командный состав подразделений.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">15</div>
+            <h3>Полковник</h3>
+            <p>Старший руководящий состав армии.</p>
+        </div>
+
+        <div class="card rank-card">
+            <div class="rank-number">16</div>
+            <h3>Генерал армии</h3>
+            <p>Высшее руководство армии.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ПОДРАЗДЕЛЕНИЯ -->
+
+<section id="units" class="units" style="background:#151e15;">
+    <h2 class="section-title">Подразделения армии</h2>
+    <p class="section-subtitle">
+        Структурные подразделения и их основные направления деятельности.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="number">01</div>
+            <h3>ГУ ГШ</h3>
+            <p>
+                Главное управление Генерального штаба.
+                Осуществляет стратегическое управление, координацию
+                деятельности подразделений, контроль исполнения
+                приказов и организацию служебной документации.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="number">02</div>
+            <h3>ССО</h3>
+            <p>
+                Силы специальных операций.
+                Подразделение специального назначения,
+                отвечающее за выполнение особо важных заданий,
+                проведение специальных мероприятий и подготовку
+                военнослужащих повышенного уровня квалификации.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="number">03</div>
+            <h3>Медицинская рота</h3>
+            <p>
+                Обеспечивает медицинское сопровождение личного состава,
+                оказание первой помощи, проведение медицинских осмотров,
+                контроль состояния здоровья военнослужащих
+                и организацию эвакуации пострадавших.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="number">04</div>
+            <h3>Войска национальной гвардии</h3>
+            <p>
+                Обеспечивают охрану общественного порядка,
+                безопасность государственных объектов,
+                участие в специальных мероприятиях
+                и взаимодействие с другими государственными структурами.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="number">05</div>
+            <h3>Рота охраны и обеспечения</h3>
+            <p>
+                Отвечает за охрану территории военной базы,
+                контрольно-пропускной режим, материально-техническое
+                обеспечение, сохранность имущества и поддержание
+                установленного порядка на территории части.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="number">06</div>
+            <h3>Рота молодого пополнения</h3>
+            <p>
+                Занимается первоначальной подготовкой новобранцев,
+                ознакомлением с воинским уставом, правилами
+                внутреннего распорядка, основами дисциплины
+                и порядком прохождения военной службы.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="number">07</div>
+            <h3>ГУ ВП</h3>
+            <p>
+                Главное управление военной полиции.
+                Контролирует соблюдение воинской дисциплины,
+                проводит проверки, рассматривает нарушения
+                внутреннего распорядка и следит за исполнением
+                установленных правил военнослужащими.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="number">08</div>
+            <h3>Военно-апелляционная комиссия</h3>
+            <p>
+                Рассматривает апелляции военнослужащих,
+                проверяет обоснованность дисциплинарных взысканий,
+                изучает спорные решения командования
+                и обеспечивает объективное рассмотрение жалоб
+                в рамках военной структуры.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ЦИТАТА -->
+
+<div class="quote">
+    <h2>«Честь дороже наград, долг выше личных интересов»</h2>
+    <p>Воинская честь — основа настоящего военнослужащего.</p>
+</div>
+
+<footer>
+    <p><span>АРМИЯ | GTA 5 ROLEPLAY</span></p>
+    <p>Официальный портал Вооружённых сил</p>
+    <p>© 2026 Все права защищены.</p>
+    <p>Честь. Долг. Отвага.</p>
+</footer>
+
+</body>
+</html>
